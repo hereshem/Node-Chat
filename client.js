@@ -145,15 +145,15 @@ function userPart(nick, timestamp) {
 // utility functions
 
 util = {
-  urlRE: /https?:\/\/([-\w\.]+)+(:\d+)?(\/([^\s]*(\?\S+)?)?)?/g, 
+  urlRE: /https?:\/\/([-\w\.]+)+(:\d+)?(\/([^\s]*(\?\S+)?)?)?/g,
 
-  //  html sanitizer 
+  //  html sanitizer
   toStaticHTML: function(inputHtml) {
     inputHtml = inputHtml.toString();
     return inputHtml.replace(/&/g, "&amp;")
                     .replace(/</g, "&lt;")
                     .replace(/>/g, "&gt;");
-  }, 
+  },
 
   //pads n with zeros on the left,
   //digits is minimum length of output
@@ -161,7 +161,7 @@ util = {
   //zeroPad(2, 500); returns "500"
   zeroPad: function (digits, n) {
     n = n.toString();
-    while (n.length < digits) 
+    while (n.length < digits)
       n = '0' + n;
     return n;
   },
@@ -172,6 +172,15 @@ util = {
     var minutes = date.getMinutes().toString();
     var hours = date.getHours().toString();
     return this.zeroPad(2, hours) + ":" + this.zeroPad(2, minutes);
+  },
+  dateString: function (d) {
+    var h = this.zeroPad(2, d.getHours());
+    var m = this.zeroPad(2, d.getMinutes());
+    var s = this.zeroPad(2, d.getSeconds());
+    var yy = d.getFullYear();
+    var mm = this.zeroPad(2, d.getMonth() + 1);
+    var dd = this.zeroPad(2, d.getDate());
+    return yy + "-" + mm + "-" + dd + " " + h + ":" + m + ":" + s
   },
 
   //does the argument only contain whitespace?
@@ -225,7 +234,7 @@ function addMessage (from, text, time, _class) {
   text = text.replace(util.urlRE, '<a target="_blank" href="$&">$&</a>');
 
   var content = '<tr>'
-              + '  <td class="date">' + util.timeString(time) + '</td>'
+              + '  <td class="date" title="' + util.dateString(time) + '">' + util.timeString(time) + '</td>'
               + '  <td class="nick">' + util.toStaticHTML(from) + '</td>'
               + '  <td class="msg-text">' + text  + '</td>'
               + '</tr>'
