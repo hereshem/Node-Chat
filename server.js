@@ -1,5 +1,5 @@
 HOST = null; // localhost
-PORT = 8001;
+PORT = 8000;
 
 // when the daemon started
 var starttime = (new Date()).getTime();
@@ -8,11 +8,11 @@ var mem = process.memoryUsage();
 // every 10 seconds poll for the memory.
 setInterval(function () {
   mem = process.memoryUsage();
-}, 10*1000);
+}, 30*1000);
 
 
 var fu = require("./fu"),
-    sys = require("sys"),
+    sys = require("util"),
     url = require("url"),
     qs = require("querystring");
 
@@ -71,10 +71,10 @@ var channel = new function () {
   // they can hang around for at most 30 seconds.
   setInterval(function () {
     var now = new Date();
-    while (callbacks.length > 0 && now - callbacks[0].timestamp > 30*1000) {
+    while (callbacks.length > 0 && now - callbacks[0].timestamp > 45*1000) {
       callbacks.shift().callback([]);
     }
-  }, 3000);
+  }, 10000);
 };
 
 var sessions = {};

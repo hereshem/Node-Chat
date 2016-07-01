@@ -1,6 +1,6 @@
 var createServer = require("http").createServer;
 var readFile = require("fs").readFile;
-var sys = require("sys");
+var sys = require("util");
 var url = require("url");
 DEBUG = false;
 
