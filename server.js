@@ -1,4 +1,4 @@
-HOST = null; // localhost
+HOST = "0.0.0.0"; // localhost
 PORT = 8000;
 
 // when the daemon started
@@ -32,13 +32,13 @@ var channel = new function () {
 
     switch (type) {
       case "msg":
-        sys.puts("<" + nick + "> " + text);
+        console.log("<" + nick + "> " + text);
         break;
       case "join":
-        sys.puts(nick + " join");
+        console.log(nick + " join");
         break;
       case "part":
-        sys.puts(nick + " part");
+        console.log(nick + " part");
         break;
     }
 
@@ -152,7 +152,7 @@ fu.get("/join", function (req, res) {
     return;
   }
 
-  //sys.puts("connection: " + nick + "@" + res.connection.remoteAddress);
+  //console.log("connection: " + nick + "@" + res.connection.remoteAddress);
 
   channel.appendMessage(session.nick, "join");
   res.simpleJSON(200, { id: session.id
