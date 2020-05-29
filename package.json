@@ -1,0 +1,25 @@
+{
+  "name": "node-chat",
+  "version": "1.0.0",
+  "description": "Simplest Node Chat example that works",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hereshem/Node-Chat.git"
+  },
+  "keywords": [
+    "node",
+    "chat",
+    "app"
+  ],
+  "author": "Hem Shrestha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hereshem/Node-Chat/issues"
+  },
+  "homepage": "https://github.com/hereshem/Node-Chat#readme"
+}
