@@ -5,6 +5,10 @@
 - run `node server.js`
 - goto browser and type `http://localhost:8000`
 
+## Setup using docker
+```
+docker run --name chat -itd -p 8000:3000 hereshem/node-chat:14
+```
 
 ## Informations
 - No any library needed
